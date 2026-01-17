@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BevCount360 | Industrial Stock Control</title>
+    <title>BevCount360 | Let's Count What Matters</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -42,44 +42,51 @@
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
+
+        .tablet-mockup {
+            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.5s ease;
+        }
+        .tablet-mockup:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
     </style>
 </head>
 <body class="bg-white text-slate-900 overflow-x-hidden">
 
     <nav class="flex justify-between items-center px-8 py-6 sticky top-0 bg-white/90 backdrop-blur-md z-[100] border-b border-slate-100">
         <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black italic">B360</div>
+            <img src="https://github.com/sithetshidiso-lab/BevCount360-web/blob/00b23ad6e8f0429d9043d650367f5969d69c695b/file_00000000b098622fa0fd31f5837c0e59%20(1).png?raw=true" alt="BevCount360 Logo" class="h-10">
             <span class="text-2xl font-black tracking-tighter text-[#0f172a]">BEVCOUNT360</span>
         </div>
-        <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-slate-500">
-            <a href="#packages" class="hover:text-blue-600">Services</a>
-            <a href="#faq" class="hover:text-blue-600">FAQ</a>
-        </div>
-        <a href="https://wa.me/27813155226" class="bg-[#0f172a] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition shadow-lg">Get Started</a>
+        <a href="https://wa.me/27813155226" class="bg-[#0f172a] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition shadow-lg">Contact Us</a>
     </nav>
 
-    <header class="relative bg-[#0f172a] pt-32 pb-40 px-6 overflow-hidden">
+    <header class="relative bg-[#0f172a] pt-32 pb-44 px-6 overflow-hidden">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-600/10 blur-[120px] rounded-full -mr-64 -mt-64"></div>
-        <div class="max-w-6xl mx-auto relative z-10 text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
+        <div class="max-w-6xl mx-auto relative z-10 text-center md:text-left grid md:grid-cols-2 gap-16 items-center">
             <div>
                 <span class="text-blue-500 font-black uppercase tracking-[0.3em] text-sm mb-6 block">Inventory Specialists</span>
-                <h1 class="text-5xl md:text-7xl font-black text-white leading-[0.9] mb-8 tracking-tighter">
-                    STOP LEAKING <br><span class="text-blue-600">YOUR PROFITS.</span>
+                <h1 class="text-5xl md:text-7xl font-black text-white leading-[0.9] mb-8 tracking-tighter uppercase">
+                    LET'S COUNT <br><span class="text-blue-600 text-6xl md:text-8xl">WHAT MATTERS.</span>
                 </h1>
                 <p class="text-slate-400 text-lg mb-10 leading-relaxed max-w-lg">
-                    We combine military-grade physical stock counts with a custom SaaS backend to eliminate shrinkage in Gauteng's busiest outlets.
+                    High-precision physical stock counts and industrial-grade SaaS reporting. We find the leakage so you can keep the profit.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="https://wa.me/27813155226" class="bg-blue-600 text-white px-10 py-5 rounded-xl font-black text-lg shadow-2xl hover:bg-blue-700 transition">BOOK YOUR TRIAL</a>
-                    <div class="flex items-center space-x-4 px-4 py-2 border border-slate-700 rounded-xl">
-                        <span class="text-white font-bold italic text-sm">"Let's count what matters"</span>
-                    </div>
                 </div>
             </div>
             <div class="hidden md:block">
-                <div class="glass-card p-8 rounded-3xl rotate-3 shadow-2xl">
-                    <div class="h-64 bg-slate-800 rounded-2xl flex items-center justify-center border border-white/10">
-                         <i class="fas fa-chart-pie text-6xl text-blue-500 opacity-50"></i>
+                <div class="tablet-mockup glass-card p-4 rounded-[2.5rem] shadow-2xl border border-white/20">
+                    <div class="bg-slate-900 rounded-[2rem] overflow-hidden border border-slate-800 p-8 flex flex-col items-center justify-center min-h-[400px]">
+                        <img src="https://github.com/sithetshidiso-lab/BevCount360-web/blob/00b23ad6e8f0429d9043d650367f5969d69c695b/file_00000000b098622fa0fd31f5837c0e59%20(1).png?raw=true" alt="B360 App" class="w-32 mb-6 drop-shadow-[0_0_15px_rgba(37,99,235,0.5)]">
+                        <div class="w-full space-y-3">
+                            <div class="h-2 bg-blue-600 rounded-full w-3/4 mx-auto"></div>
+                            <div class="h-2 bg-slate-700 rounded-full w-1/2 mx-auto"></div>
+                            <div class="h-2 bg-slate-700 rounded-full w-2/3 mx-auto"></div>
+                        </div>
+                        <p class="mt-8 text-blue-500 text-xs font-black uppercase tracking-widest">Digital Reporting Active</p>
                     </div>
                 </div>
             </div>
@@ -93,93 +100,67 @@
     </div>
 
     <section class="py-24 px-6 bg-white">
-        <div class="max-w-5xl mx-auto promo-gradient rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden">
-            <div class="relative z-10">
-                <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">THE R1,200 <br>CHALLENGE.</h2>
-                <p class="text-blue-100 text-xl mb-12 max-w-2xl mx-auto font-medium">
-                    2 Full Stock Counts. 2 Comprehensive Variance Reports. No commitments. We show you the gaps in your system at our cost.
-                </p>
-                <a href="https://wa.me/27813155226?text=I%20want%20to%20take%20the%20R1200%20Challenge" class="inline-block bg-white text-blue-600 px-16 py-5 rounded-full font-black text-sm uppercase tracking-widest shadow-2xl hover:scale-105 transition">Claim Trial Now</a>
-            </div>
-        </div>
+        <div class="max-w-5xl mx-auto promo-gradient rounded-[3rem] p-12 md:p-20 text-center text-white">
+            <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">THE R1,200 <br>CHALLENGE.</h2>
+            <p class="text-blue-100 text-xl mb-12 max-w-2xl mx-auto font-medium">
+                2 Full Physical Counts. 2 Detailed Variance Reports. See the truth about your stock levels at our cost.
+            </p>
+            <a href="https://wa.me/27813155226?text=I%20want%20to%20take%20the%20R1200%20Challenge" class="inline-block bg-white text-blue-600 px-16 py-5 rounded-full font-black text-sm uppercase tracking-widest shadow-2xl hover:bg-slate-100 transition">Claim Trial Now</a>
     </section>
 
-    <section id="packages" class="py-24 px-6 bg-slate-50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h3 class="text-4xl font-black tracking-tighter uppercase mb-4">Service Tiers</h3>
-                <p class="text-slate-500 font-medium">Built for everyone from neighborhood taverns to high-turnover hubs.</p>
+    <section class="py-24 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white p-10 rounded-3xl border border-slate-200 flex flex-col hover:border-blue-500 transition-all">
+                <span class="text-xs font-black uppercase text-slate-400 mb-6 tracking-widest">Self-Service</span>
+                <h4 class="text-2xl font-black mb-2 uppercase">App-Only</h4>
+                <div class="text-4xl font-black mb-8 text-blue-600">R599<span class="text-sm font-normal text-slate-400">/mo</span></div>
+                <ul class="text-sm space-y-4 mb-10 text-slate-600 flex-grow font-medium">
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Daily Ops App Access</li>
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Incoming Stock Logs</li>
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Daily Cash-Ups</li>
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Expense Tracking</li>
+                </ul>
+                <a href="https://wa.me/27813155226" class="bg-slate-900 text-white py-4 rounded-xl text-xs font-black uppercase text-center">Select Plan</a>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-10 rounded-3xl border border-slate-200 flex flex-col hover:border-blue-500 transition-all duration-300">
-                    <span class="text-xs font-black uppercase text-slate-400 mb-6 tracking-widest">Self-Service</span>
-                    <h4 class="text-2xl font-black mb-2 uppercase">App-Only</h4>
-                    <div class="text-4xl font-black mb-8 text-blue-600">R599<span class="text-sm font-normal text-slate-400">/mo</span></div>
-                    <ul class="text-sm space-y-4 mb-10 text-slate-600 flex-grow font-medium">
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Daily Ops App Access</li>
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Incoming Stock Logs</li>
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Daily Cash-Ups</li>
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Expense Tracking</li>
-                    </ul>
-                    <a href="https://wa.me/27813155226" class="bg-slate-900 text-white py-4 rounded-xl text-xs font-black uppercase text-center tracking-widest">Select</a>
-                </div>
 
-                <div class="bg-white p-10 rounded-3xl border border-slate-200 flex flex-col hover:border-blue-500 transition-all">
-                    <span class="text-xs font-black uppercase text-slate-400 mb-6 tracking-widest">Field Service</span>
-                    <h4 class="text-2xl font-black mb-2 uppercase">Basic</h4>
-                    <div class="text-4xl font-black mb-8 text-blue-600">R1,200<span class="text-sm font-normal text-slate-400">/mo</span></div>
-                    <ul class="text-sm space-y-4 mb-10 text-slate-600 flex-grow font-medium">
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> 1 On-Site Count</li>
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Full App Access</li>
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Variance Reports</li>
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Email/Phone Support</li>
-                    </ul>
-                    <a href="https://wa.me/27813155226" class="bg-slate-900 text-white py-4 rounded-xl text-xs font-black uppercase text-center tracking-widest">Select</a>
-                </div>
-
-                <div class="bg-white p-10 rounded-3xl premium-glow flex flex-col relative scale-105 z-10">
-                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] px-6 py-2 rounded-full font-black uppercase shadow-xl">Most Popular</span>
-                    <span class="text-xs font-black uppercase text-blue-600 mb-6 tracking-widest">Hybrid Service</span>
-                    <h4 class="text-2xl font-black mb-2 uppercase">Standard</h4>
-                    <div class="text-5xl font-black mb-8 text-[#0f172a]">R1,900<span class="text-sm font-normal text-slate-400">/mo</span></div>
-                    <ul class="text-sm space-y-4 mb-10 text-slate-700 flex-grow font-semibold">
-                        <li><i class="fas fa-bolt text-blue-500 mr-2"></i> 2 On-Site Counts</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Full SaaS App Access</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Growth Analytics</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Priority Report Delivery</li>
-                    </ul>
-                    <a href="https://wa.me/27813155226" class="bg-blue-600 text-white py-4 rounded-xl text-xs font-black uppercase text-center tracking-widest shadow-xl">Select Plan</a>
-                </div>
-
-                <div class="bg-white p-10 rounded-3xl border border-slate-200 flex flex-col hover:border-blue-500 transition-all">
-                    <span class="text-xs font-black uppercase text-slate-400 mb-6 tracking-widest">Enterprise</span>
-                    <h4 class="text-2xl font-black mb-2 uppercase">Premium</h4>
-                    <div class="text-4xl font-black mb-8 text-blue-600">R3,000<span class="text-sm font-normal text-slate-400">/mo</span></div>
-                    <ul class="text-sm space-y-4 mb-10 text-slate-600 flex-grow font-medium">
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Weekly On-Site Counts</li>
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Staff Training</li>
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Real-time Dashboard</li>
-                        <li><i class="fas fa-plus text-blue-500 mr-2"></i> Dedicated Lead</li>
-                    </ul>
-                    <a href="https://wa.me/27813155226" class="bg-slate-900 text-white py-4 rounded-xl text-xs font-black uppercase text-center tracking-widest">Select</a>
-                </div>
+            <div class="bg-white p-10 rounded-3xl border border-slate-200 flex flex-col hover:border-blue-500 transition-all">
+                <span class="text-xs font-black uppercase text-slate-400 mb-6 tracking-widest">Field Service</span>
+                <h4 class="text-2xl font-black mb-2 uppercase">Basic</h4>
+                <div class="text-4xl font-black mb-8 text-blue-600">R1,200<span class="text-sm font-normal text-slate-400">/mo</span></div>
+                <ul class="text-sm space-y-4 mb-10 text-slate-600 flex-grow font-medium">
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> 1 On-Site Count</li>
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Full App Access</li>
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Variance Reports</li>
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Email/Phone Support</li>
+                </ul>
+                <a href="https://wa.me/27813155226" class="bg-slate-900 text-white py-4 rounded-xl text-xs font-black uppercase text-center">Select Plan</a>
             </div>
-        </div>
-    </section>
 
-    <section id="faq" class="py-24 px-6 bg-white border-t border-slate-100">
-        <div class="max-w-3xl mx-auto">
-            <h3 class="text-4xl font-black text-center mb-16 tracking-tighter uppercase">Common Questions</h3>
-            <div class="space-y-10">
-                <div class="group">
-                    <h4 class="text-lg font-black mb-3 group-hover:text-blue-600 transition uppercase">How accurate are your stock counts?</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">We use a dual-verification system. Every count is reconciled against your digital logs to ensure we identify exactly where the leakage is happening.</p>
-                </div>
-                <div class="group border-t border-slate-100 pt-10">
-                    <h4 class="text-lg font-black mb-3 group-hover:text-blue-600 transition uppercase">What happens if there are discrepancies?</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">Our reports don't just show numbers; they show variance. We help you investigate if the loss is due to theft, poor pouring, or recording errors.</p>
-                </div>
+            <div class="bg-white p-10 rounded-3xl premium-glow flex flex-col relative scale-105 z-10">
+                <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] px-6 py-2 rounded-full font-black uppercase">Hybrid Leader</span>
+                <span class="text-xs font-black uppercase text-blue-600 mb-6 tracking-widest">Field Service</span>
+                <h4 class="text-2xl font-black mb-2 uppercase">Standard</h4>
+                <div class="text-5xl font-black mb-8 text-[#0f172a]">R1,900<span class="text-sm font-normal text-slate-400">/mo</span></div>
+                <ul class="text-sm space-y-4 mb-10 text-slate-700 flex-grow font-semibold">
+                    <li><i class="fas fa-star text-blue-500 mr-2"></i> 2 On-Site Counts</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Full SaaS App Access</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Growth Analytics</li>
+                    <li><i class="fas fa-check text-blue-500 mr-2"></i> Priority Report Delivery</li>
+                </ul>
+                <a href="https://wa.me/27813155226" class="bg-blue-600 text-white py-4 rounded-xl text-xs font-black uppercase text-center shadow-xl">Select Plan</a>
+            </div>
+
+            <div class="bg-white p-10 rounded-3xl border border-slate-200 flex flex-col hover:border-blue-500 transition-all">
+                <span class="text-xs font-black uppercase text-slate-400 mb-6 tracking-widest">Enterprise</span>
+                <h4 class="text-2xl font-black mb-2 uppercase">Premium</h4>
+                <div class="text-4xl font-black mb-8 text-blue-600">R3,000<span class="text-sm font-normal text-slate-400">/mo</span></div>
+                <ul class="text-sm space-y-4 mb-10 text-slate-600 flex-grow font-medium">
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Weekly On-Site Counts</li>
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Staff Protocol Training</li>
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Real-time Dashboard</li>
+                    <li><i class="fas fa-plus text-blue-500 mr-2"></i> Dedicated Lead</li>
+                </ul>
+                <a href="https://wa.me/27813155226" class="bg-slate-900 text-white py-4 rounded-xl text-xs font-black uppercase text-center">Select Plan</a>
             </div>
         </div>
     </section>
@@ -187,17 +168,16 @@
     <footer class="bg-[#0f172a] text-white pt-24 pb-12 px-8">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-20 border-b border-slate-800 pb-20 mb-12">
             <div>
-                <h5 class="text-2xl font-black mb-6 tracking-tighter">BEVCOUNT360</h5>
+                <div class="flex items-center space-x-3 mb-6">
+                    <img src="https://github.com/sithetshidiso-lab/BevCount360-web/blob/00b23ad6e8f0429d9043d650367f5969d69c695b/file_00000000b098622fa0fd31f5837c0e59%20(1).png?raw=true" class="h-8">
+                    <h5 class="text-2xl font-black tracking-tighter">BEVCOUNT360</h5>
+                </div>
                 <p class="text-blue-500 font-bold italic text-sm mb-6 uppercase tracking-widest">Let's count what matters</p>
-                <p class="text-slate-500 text-xs leading-relaxed uppercase tracking-widest">
-                    Professional inventory management tailored for the high-turnover liquor and retail market.
-                </p>
+                <p class="text-slate-500 text-xs leading-relaxed uppercase tracking-widest">Broadway Place | Kroll's Inn | Mokgadi's | Matlapeng</p>
             </div>
             <div>
-                <h5 class="text-xs font-black uppercase tracking-[0.3em] text-slate-500 mb-8">Headquarters</h5>
-                <p class="text-sm font-bold leading-loose">
-                    1496 Lesotho Street, <br>Far East Bank, Alexandra,<br>Gauteng, 2090
-                </p>
+                <h5 class="text-xs font-black uppercase tracking-[0.3em] text-slate-500 mb-8">Location</h5>
+                <p class="text-sm font-bold leading-loose">1496 Lesotho Street, <br>Far East Bank, Alexandra,<br>Gauteng, 2090</p>
             </div>
             <div>
                 <h5 class="text-xs font-black uppercase tracking-[0.3em] text-slate-500 mb-8">Direct Channel</h5>
