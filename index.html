@@ -11,6 +11,7 @@
         body { font-family: 'Inter', sans-serif; }
         .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .tablet-mockup { transform: perspective(1000px) rotateY(-15deg); }
+        .hover-lift:hover { transform: translateY(-5px); transition: 0.3s; }
     </style>
 </head>
 <body class="bg-white text-slate-900">
@@ -20,7 +21,7 @@
             <img src="https://github.com/sithetshidiso-lab/BevCount360-web/blob/00b23ad6e8f0429d9043d650367f5969d69c695b/file_00000000b098622fa0fd31f5837c0e59%20(1).png?raw=true" class="h-10">
             <span class="text-2xl font-black tracking-tighter uppercase">BevCount360</span>
         </div>
-        <a href="https://wa.me/27813155226" class="bg-[#0f172a] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest">Contact Us</a>
+        <a href="https://wa.me/27813155226" class="bg-[#0f172a] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest">Chat on WhatsApp</a>
     </nav>
 
     <header class="relative bg-[#0f172a] pt-32 pb-44 px-6 overflow-hidden">
@@ -30,8 +31,10 @@
                 <h1 class="text-5xl md:text-7xl font-black text-white leading-[0.9] mb-8 tracking-tighter uppercase">
                     LET'S COUNT <br><span class="text-blue-600">WHAT MATTERS.</span>
                 </h1>
-                <p class="text-slate-400 text-lg mb-10 max-w-lg">High-precision physical stock counts and industrial-grade SaaS reporting.</p>
-                <a href="https://wa.me/27813155226" class="bg-blue-600 text-white px-10 py-5 rounded-xl font-black text-lg">BOOK YOUR TRIAL</a>
+                <p class="text-slate-400 text-lg mb-10 max-w-lg">
+                    We count your stock by hand and give you simple digital reports so you can stop losing money and grow your business.
+                </p>
+                <a href="https://wa.me/27813155226?text=I'm%20interested%20in%20a%20stock%20count%20trial" class="bg-blue-600 text-white px-10 py-5 rounded-xl font-black text-lg shadow-xl hover:bg-blue-700 transition">BOOK YOUR TRIAL</a>
             </div>
             <div class="hidden md:block">
                 <div class="tablet-mockup glass-card p-4 rounded-[2.5rem] border border-white/20">
@@ -49,22 +52,30 @@
             <h2 class="text-4xl font-bold text-slate-900 mb-4">Comprehensive Inventory Solutions</h2>
             <p class="text-slate-500 mb-16 max-w-2xl mx-auto">Our hybrid approach combines professional expertise with cutting-edge technology</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-10 border border-slate-100 rounded-2xl flex flex-col items-center">
+                <div class="p-10 border border-slate-100 rounded-2xl flex flex-col items-center hover-lift">
                     <div class="bg-blue-50 p-4 rounded-lg mb-6"><i class="fas fa-users text-blue-600 text-2xl"></i></div>
                     <h4 class="font-bold text-lg mb-4">Field Service</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">Scheduled physical stock counts conducted by our professional team at your location.</p>
                 </div>
-                <div class="p-10 border border-slate-100 rounded-2xl flex flex-col items-center">
+                <div class="p-10 border border-slate-100 rounded-2xl flex flex-col items-center hover-lift">
                     <div class="bg-blue-50 p-4 rounded-lg mb-6"><i class="fas fa-mobile-alt text-blue-600 text-2xl"></i></div>
                     <h4 class="font-bold text-lg mb-4">Hybrid SaaS</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">Digital tools for daily cash-ups, incoming stock logs, and comprehensive expense tracking.</p>
                 </div>
-                <div class="p-10 border border-slate-100 rounded-2xl flex flex-col items-center">
+                <div class="p-10 border border-slate-100 rounded-2xl flex flex-col items-center hover-lift">
                     <div class="bg-blue-50 p-4 rounded-lg mb-6"><i class="fas fa-file-alt text-blue-600 text-2xl"></i></div>
                     <h4 class="font-bold text-lg mb-4">Reporting</h4>
                     <p class="text-slate-500 text-sm leading-relaxed">Verified stock count reports delivered within 72 hours with detailed analytics.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="pb-24 px-6">
+        <div class="max-w-5xl mx-auto bg-blue-600 rounded-[3rem] p-12 md:p-20 text-center text-white shadow-2xl">
+            <h2 class="text-4xl md:text-6xl font-black mb-6 uppercase">The R1,200 Challenge.</h2>
+            <p class="text-blue-100 text-xl mb-12">2 Full Physical Counts. 2 Detailed Variance Reports.</p>
+            <a href="https://wa.me/27813155226?text=I%20want%20to%20take%20the%20R1200%20Challenge" class="bg-white text-blue-600 px-16 py-5 rounded-full font-black text-sm uppercase tracking-widest hover:bg-slate-100 transition">Claim Trial Now</a>
         </div>
     </section>
 
@@ -75,7 +86,7 @@
                 <p class="text-slate-500 mt-2">Choose the package that fits your business needs</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-10 rounded-2xl border border-slate-200 flex flex-col">
+                <div class="bg-white p-10 rounded-2xl border border-slate-200 flex flex-col hover-lift">
                     <h4 class="font-bold mb-1 uppercase text-sm">App-Only Package</h4>
                     <p class="text-xs text-slate-400 mb-4">Client manages stock counting</p>
                     <div class="text-4xl font-bold mb-8">R599<span class="text-sm font-normal text-slate-400">/month</span></div>
@@ -84,9 +95,9 @@
                         <li><i class="fas fa-check text-blue-500 mr-2"></i> Basic reporting tools</li>
                         <li><i class="fas fa-check text-blue-500 mr-2"></i> Email support</li>
                     </ul>
-                    <button class="border border-slate-200 py-3 rounded-lg text-xs font-bold uppercase">Get Started</button>
+                    <a href="https://wa.me/27813155226?text=I%20am%20interested%20in%20the%20App-Only%20Package" class="block w-full text-center border border-slate-200 py-3 rounded-lg text-xs font-bold uppercase hover:bg-slate-50">Get Started</a>
                 </div>
-                <div class="bg-white p-10 rounded-2xl border border-slate-200 flex flex-col">
+                <div class="bg-white p-10 rounded-2xl border border-slate-200 flex flex-col hover-lift">
                     <h4 class="font-bold mb-1 uppercase text-sm">Basic Package</h4>
                     <p class="text-xs text-slate-400 mb-4">Perfect for small outlets</p>
                     <div class="text-4xl font-bold mb-8">R1200<span class="text-sm font-normal text-slate-400">/month</span></div>
@@ -95,9 +106,9 @@
                         <li><i class="fas fa-check text-blue-500 mr-2"></i> Full app access</li>
                         <li><i class="fas fa-check text-blue-500 mr-2"></i> Comprehensive reporting</li>
                     </ul>
-                    <button class="border border-slate-200 py-3 rounded-lg text-xs font-bold uppercase">Get Started</button>
+                    <a href="https://wa.me/27813155226?text=I%20am%20interested%20in%20the%20Basic%20Package" class="block w-full text-center border border-slate-200 py-3 rounded-lg text-xs font-bold uppercase hover:bg-slate-50">Get Started</a>
                 </div>
-                <div class="bg-white p-10 rounded-2xl border-2 border-blue-600 flex flex-col relative shadow-xl">
+                <div class="bg-white p-10 rounded-2xl border-2 border-blue-600 flex flex-col relative shadow-xl hover-lift">
                     <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] px-4 py-1 rounded-full font-bold uppercase">Most Popular</span>
                     <h4 class="font-bold mb-1 uppercase text-sm">Standard Package</h4>
                     <p class="text-xs text-slate-400 mb-4">Ideal for growing businesses</p>
@@ -107,9 +118,9 @@
                         <li><i class="fas fa-check text-blue-500 mr-2"></i> Full app access</li>
                         <li><i class="fas fa-check text-blue-500 mr-2"></i> Advanced reporting</li>
                     </ul>
-                    <button class="bg-blue-600 text-white py-3 rounded-lg text-xs font-bold uppercase">Get Started</button>
+                    <a href="https://wa.me/27813155226?text=I%20am%20interested%20in%20the%20Standard%20Package" class="block w-full text-center bg-blue-600 text-white py-3 rounded-lg text-xs font-bold uppercase hover:bg-blue-700">Get Started</a>
                 </div>
-                <div class="bg-white p-10 rounded-2xl border border-slate-200 flex flex-col">
+                <div class="bg-white p-10 rounded-2xl border border-slate-200 flex flex-col hover-lift">
                     <h4 class="font-bold mb-1 uppercase text-sm">Premium Package</h4>
                     <p class="text-xs text-slate-400 mb-4">Complete inventory management</p>
                     <div class="text-4xl font-bold mb-8">R3000<span class="text-sm font-normal text-slate-400">/month</span></div>
@@ -118,7 +129,7 @@
                         <li><i class="fas fa-check text-blue-500 mr-2"></i> Staff training included</li>
                         <li><i class="fas fa-check text-blue-500 mr-2"></i> Custom integrations</li>
                     </ul>
-                    <button class="border border-slate-200 py-3 rounded-lg text-xs font-bold uppercase">Get Started</button>
+                    <a href="https://wa.me/27813155226?text=I%20am%20interested%20in%20the%20Premium%20Package" class="block w-full text-center border border-slate-200 py-3 rounded-lg text-xs font-bold uppercase hover:bg-slate-50">Get Started</a>
                 </div>
             </div>
         </div>
@@ -129,34 +140,34 @@
             <h2 class="text-4xl font-bold text-slate-900 mb-4">Powerful Features</h2>
             <p class="text-slate-500 mb-16">Everything you need to manage your inventory efficiently</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-slate-50 p-8 rounded-xl text-left">
+                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
                     <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-dollar-sign"></i></div>
-                    <h5 class="font-bold mb-2">Daily Cash-Up Tracking</h5>
+                    <h5 class="font-bold mb-2 uppercase text-xs">Daily Cash-Up Tracking</h5>
                     <p class="text-sm text-slate-500 leading-relaxed">Monitor daily sales and reconcile cash flow effortlessly.</p>
                 </div>
-                <div class="bg-slate-50 p-8 rounded-xl text-left">
+                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
                     <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-box"></i></div>
-                    <h5 class="font-bold mb-2">Incoming Stock Recording</h5>
+                    <h5 class="font-bold mb-2 uppercase text-xs">Incoming Stock Recording</h5>
                     <p class="text-sm text-slate-500 leading-relaxed">Log all incoming inventory with timestamps and supplier details.</p>
                 </div>
-                <div class="bg-slate-50 p-8 rounded-xl text-left">
+                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
                     <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-receipt"></i></div>
-                    <h5 class="font-bold mb-2">Expense Tracking</h5>
+                    <h5 class="font-bold mb-2 uppercase text-xs">Expense Tracking</h5>
                     <p class="text-sm text-slate-500 leading-relaxed">Track all operational expenses in one centralized system.</p>
                 </div>
-                <div class="bg-slate-50 p-8 rounded-xl text-left">
+                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
                     <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-chart-line"></i></div>
-                    <h5 class="font-bold mb-2">Monthly & Weekly Reporting</h5>
+                    <h5 class="font-bold mb-2 uppercase text-xs">Monthly & Weekly Reporting</h5>
                     <p class="text-sm text-slate-500 leading-relaxed">Get comprehensive insights with customizable reporting periods.</p>
                 </div>
-                <div class="bg-slate-50 p-8 rounded-xl text-left">
+                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
                     <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-graduation-cap"></i></div>
-                    <h5 class="font-bold mb-2">Staff Training</h5>
+                    <h5 class="font-bold mb-2 uppercase text-xs">Staff Training</h5>
                     <p class="text-sm text-slate-500 leading-relaxed">Premium package includes comprehensive staff training and onboarding.</p>
                 </div>
-                <div class="bg-slate-50 p-8 rounded-xl text-left">
+                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
                     <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-mobile-alt"></i></div>
-                    <h5 class="font-bold mb-2">Mobile Access</h5>
+                    <h5 class="font-bold mb-2 uppercase text-xs">Mobile Access</h5>
                     <p class="text-sm text-slate-500 leading-relaxed">Access your data anywhere, anytime with our mobile app.</p>
                 </div>
             </div>
@@ -187,21 +198,42 @@
         </div>
     </section>
 
+    <section class="py-24 px-6 bg-slate-50">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h4 class="font-bold text-sm mb-3">How accurate are the physical stock counts?</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Our team uses a double-blind counting method to ensure 99.9% accuracy, which is then reconciled with your sales logs.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <h4 class="font-bold text-sm mb-3">Can I use the app without the field service?</h4>
+                    <p class="text-slate-500 text-xs leading-relaxed">Yes, our App-Only package is designed for owners who prefer to handle the counting themselves but want the reporting tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-[#0f172a] text-white pt-24 pb-12 px-8">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-20">
             <div>
                 <img src="https://github.com/sithetshidiso-lab/BevCount360-web/blob/00b23ad6e8f0429d9043d650367f5969d69c695b/file_00000000b098622fa0fd31f5837c0e59%20(1).png?raw=true" class="h-8 mb-6">
                 <p class="text-blue-500 font-bold italic text-sm">Let's count what matters</p>
+                <p class="text-xs text-slate-500 mt-6 uppercase tracking-widest">Broadway Place | Kroll's Inn | Mokgadi's | Matlapeng</p>
+            </div>
+            <div>
+                <h5 class="text-xs font-black uppercase text-slate-500 mb-8 tracking-widest">Head Office</h5>
+                <p class="text-sm font-bold leading-loose">1496 Lesotho Street, <br>Far East Bank, Alexandra,<br>2090</p>
             </div>
             <div>
                 <h5 class="text-xs font-black uppercase text-slate-500 mb-8 tracking-widest">Contact Information</h5>
-                <p class="text-lg font-bold mb-2">+27 81 315 5226</p>
-                <p class="text-slate-500 text-xs">1496 Lesotho Street, Alex, 2090</p>
+                <p class="text-lg font-bold mb-2 text-blue-500">+27 81 315 5226</p>
+                <p class="text-slate-500 text-xs font-bold uppercase mb-2">Mon - Fri: 08:00 - 17:00</p>
+                <a href="https://wa.me/27813155226" class="text-blue-400 text-xs font-bold">WhatsApp Always Open</a>
             </div>
-            <div>
-                <h5 class="text-xs font-black uppercase text-slate-500 mb-8 tracking-widest">Our Clients</h5>
-                <p class="text-xs text-slate-500 uppercase leading-loose">Broadway Place | Kroll's Inn | Mokgadi's | Matlapeng</p>
-            </div>
+        </div>
+        <div class="text-center text-[10px] text-slate-600 font-black uppercase tracking-[0.5em] mt-16">
+            &copy; 2026 BEVCOUNT360. ALL RIGHTS RESERVED.
         </div>
     </footer>
 
