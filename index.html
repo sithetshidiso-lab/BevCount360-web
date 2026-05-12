@@ -1,241 +1,1217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BevCount360 | Let's Count What Matters</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .tablet-mockup { transform: perspective(1000px) rotateY(-15deg); }
-        .hover-lift:hover { transform: translateY(-5px); transition: 0.3s; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BevCount360 | Operational Control for Real Businesses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a0f1e;
+      --navy-mid: #111827;
+      --navy-light: #1a2540;
+      --blue: #2563eb;
+      --blue-bright: #3b82f6;
+      --blue-glow: rgba(37,99,235,0.18);
+      --green: #10b981;
+      --amber: #f59e0b;
+      --white: #ffffff;
+      --slate: #94a3b8;
+      --slate-light: #cbd5e1;
+      --border: rgba(255,255,255,0.07);
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--navy);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2rem;
+      height: 64px;
+      background: rgba(10,15,30,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: .75rem;
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 900;
+      letter-spacing: .05em; text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .nav-brand img { height: 32px; }
+    .nav-cta {
+      display: flex; align-items: center; gap: .5rem;
+      background: #25d366; color: #fff;
+      padding: .55rem 1.4rem; border-radius: 999px;
+      font-family: var(--font-display);
+      font-weight: 700; font-size: .85rem;
+      letter-spacing: .08em; text-transform: uppercase;
+      text-decoration: none;
+      transition: opacity .2s;
+    }
+    .nav-cta:hover { opacity: .88; }
+    .nav-cta i { font-size: 1rem; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex; align-items: center;
+      padding: 5rem 2rem 4rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 60% 40%, rgba(37,99,235,.22) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 15% 80%, rgba(16,185,129,.1) 0%, transparent 60%),
+        linear-gradient(160deg, #0a0f1e 0%, #0d1529 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 70% at 60% 30%, black 0%, transparent 75%);
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(37,99,235,.15);
+      border: 1px solid rgba(37,99,235,.35);
+      border-radius: 999px;
+      padding: .35rem 1rem;
+      font-size: .7rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow span { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: .92;
+      letter-spacing: -.01em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--blue-bright); }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--slate-light);
+      max-width: 480px; margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--blue); color: #fff;
+      padding: .9rem 2rem; border-radius: .75rem;
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 1rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: transparent; color: var(--white);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: .9rem 2rem; border-radius: .75rem;
+      font-family: var(--font-display);
+      font-weight: 700; font-size: 1rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color .2s, background .2s, transform .15s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.05); transform: translateY(-2px); }
+
+    /* hero right — stat cards */
+    .hero-right { display: flex; flex-direction: column; gap: 1rem; }
+    .stat-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: border-color .2s;
+    }
+    .stat-card:hover { border-color: rgba(37,99,235,.4); }
+    .stat-icon {
+      width: 44px; height: 44px; border-radius: .65rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .stat-icon.blue { background: rgba(37,99,235,.2); color: var(--blue-bright); }
+    .stat-icon.green { background: rgba(16,185,129,.15); color: var(--green); }
+    .stat-icon.amber { background: rgba(245,158,11,.15); color: var(--amber); }
+    .stat-label { font-size: .7rem; color: var(--slate); text-transform: uppercase; letter-spacing: .1em; font-weight: 600; }
+    .stat-value { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--white); line-height: 1; }
+
+    .hero-badge {
+      display: flex; align-items: center; gap: .75rem;
+      background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.25);
+      border-radius: .75rem; padding: 1rem 1.25rem; margin-top: .5rem;
+    }
+    .hero-badge i { color: var(--green); font-size: 1.2rem; }
+    .hero-badge p { font-size: .85rem; color: var(--slate-light); }
+    .hero-badge strong { color: var(--white); }
+
+    /* ── PAIN SECTION ── */
+    .pain { padding: 5rem 2rem; background: #070c18; border-top: 1px solid var(--border); }
+    .pain-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: .7rem; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--blue-bright);
+      margin-bottom: 1rem;
+    }
+    .pain h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; text-transform: uppercase;
+      margin-bottom: 1rem; line-height: 1;
+    }
+    .pain-lead { font-size: 1.05rem; color: var(--slate-light); max-width: 540px; margin-bottom: 3rem; }
+    .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+    .pain-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(239,68,68,.15);
+      border-radius: 1rem; padding: 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .pain-card i { color: #ef4444; font-size: 1.1rem; margin-top: .15rem; flex-shrink: 0; }
+    .pain-card p { font-size: .95rem; color: var(--slate-light); line-height: 1.5; }
+    .pain-card strong { color: var(--white); }
+    .pain-cta {
+      margin-top: 3rem;
+      background: rgba(37,99,235,.1); border: 1px solid rgba(37,99,235,.3);
+      border-radius: 1rem; padding: 1.5rem 2rem;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+      gap: 1.5rem;
+    }
+    .pain-cta p { font-size: 1rem; color: var(--slate-light); }
+    .pain-cta strong { color: var(--white); font-size: 1.05rem; }
+
+    /* ── DUAL MODEL ── */
+    .models { padding: 5rem 2rem; background: var(--navy); }
+    .models-inner { max-width: 1100px; margin: 0 auto; }
+    .models h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .models-lead { color: var(--slate-light); max-width: 560px; margin-bottom: 3rem; font-size: 1rem; }
+    .models-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .model-card {
+      border-radius: 1.25rem; padding: 2.5rem;
+      border: 1px solid var(--border);
+      position: relative; overflow: hidden;
+      transition: border-color .25s;
+    }
+    .model-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .model-card.pos { background: rgba(37,99,235,.07); }
+    .model-card.pos::before { background: linear-gradient(90deg, var(--blue), #60a5fa); }
+    .model-card.pos:hover { border-color: rgba(37,99,235,.45); }
+    .model-card.stock { background: rgba(16,185,129,.06); }
+    .model-card.stock::before { background: linear-gradient(90deg, var(--green), #34d399); }
+    .model-card.stock:hover { border-color: rgba(16,185,129,.4); }
+
+    .model-tag {
+      display: inline-flex; align-items: center; gap: .4rem;
+      border-radius: 999px; padding: .3rem .85rem;
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .model-tag.pos { background: rgba(37,99,235,.2); color: var(--blue-bright); border: 1px solid rgba(37,99,235,.3); }
+    .model-tag.stock { background: rgba(16,185,129,.15); color: var(--green); border: 1px solid rgba(16,185,129,.25); }
+
+    .model-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem; font-weight: 800;
+      text-transform: uppercase; margin-bottom: .75rem;
+    }
+    .model-card > p { font-size: .9rem; color: var(--slate-light); margin-bottom: 1.75rem; line-height: 1.6; }
+    .model-list { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+    .model-list li {
+      display: flex; align-items: flex-start; gap: .75rem;
+      font-size: .88rem; color: var(--slate-light);
+    }
+    .model-list li i { font-size: .8rem; margin-top: .25rem; flex-shrink: 0; }
+    .model-list li i.pos-icon { color: var(--blue-bright); }
+    .model-list li i.stock-icon { color: var(--green); }
+    .model-fits {
+      margin-top: 1.75rem; padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .model-fits-label { font-size: .65rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--slate); margin-bottom: .65rem; }
+    .model-fits-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .fit-tag {
+      font-size: .72rem; padding: .25rem .7rem;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,.1);
+      color: var(--slate-light); background: rgba(255,255,255,.04);
+    }
+    .models-note {
+      margin-top: 1.5rem; text-align: center;
+      font-size: .88rem; color: var(--slate);
+      padding: 1rem; border-radius: .75rem;
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+    }
+    .models-note strong { color: var(--white); }
+
+    /* ── HOW IT WORKS ── */
+    .how { padding: 5rem 2rem; background: #070c18; border-top: 1px solid var(--border); }
+    .how-inner { max-width: 900px; margin: 0 auto; }
+    .how h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; text-transform: uppercase;
+      margin-bottom: .75rem; text-align: center;
+    }
+    .how-lead { text-align: center; color: var(--slate-light); margin-bottom: 3.5rem; }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: grid; grid-template-columns: 56px 1fr; gap: 1.5rem;
+      align-items: stretch;
+    }
+    .step-left { display: flex; flex-direction: column; align-items: center; }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 900; font-size: 1.1rem;
+      flex-shrink: 0; position: relative; z-index: 1;
+    }
+    .step-num.s1 { background: rgba(37,99,235,.25); color: var(--blue-bright); border: 1px solid rgba(37,99,235,.4); }
+    .step-num.s2 { background: rgba(16,185,129,.2); color: var(--green); border: 1px solid rgba(16,185,129,.35); }
+    .step-num.s3 { background: rgba(245,158,11,.2); color: var(--amber); border: 1px solid rgba(245,158,11,.3); }
+    .step-num.s4 { background: rgba(139,92,246,.2); color: #a78bfa; border: 1px solid rgba(139,92,246,.3); }
+    .step-line {
+      width: 2px; flex: 1; margin: .35rem 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,.1), transparent);
+      min-height: 2rem;
+    }
+    .step:last-child .step-line { display: none; }
+    .step-body { padding-bottom: 2.5rem; }
+    .step h4 {
+      font-family: var(--font-display);
+      font-size: 1.2rem; font-weight: 800; text-transform: uppercase;
+      margin-bottom: .4rem;
+    }
+    .step p { font-size: .9rem; color: var(--slate-light); line-height: 1.6; }
+
+    /* ── FEATURES ── */
+    .features { padding: 5rem 2rem; background: var(--navy); }
+    .features-inner { max-width: 1100px; margin: 0 auto; }
+    .features h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .features-lead { color: var(--slate-light); max-width: 560px; margin-bottom: 3rem; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .feat-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 1rem; padding: 1.5rem;
+      transition: border-color .2s, background .2s;
+    }
+    .feat-card:hover { background: rgba(255,255,255,.055); border-color: rgba(37,99,235,.35); }
+    .feat-icon {
+      width: 40px; height: 40px; border-radius: .6rem;
+      background: rgba(37,99,235,.18); color: var(--blue-bright);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem; margin-bottom: 1rem;
+    }
+    .feat-card h5 {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .03em; margin-bottom: .4rem;
+    }
+    .feat-card p { font-size: .82rem; color: var(--slate); line-height: 1.55; }
+
+    /* ── TRUST ── */
+    .trust { padding: 5rem 2rem; background: #070c18; border-top: 1px solid var(--border); }
+    .trust-inner { max-width: 1100px; margin: 0 auto; }
+    .trust h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; text-transform: uppercase; margin-bottom: .75rem;
+    }
+    .trust-lead { color: var(--slate-light); max-width: 540px; margin-bottom: 3rem; }
+    .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .trust-item {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 1rem; padding: 1.5rem;
+      display: flex; gap: 1rem;
+    }
+    .trust-item i { color: var(--green); font-size: 1.1rem; margin-top: .15rem; flex-shrink: 0; }
+    .trust-item h5 { font-size: .85rem; font-weight: 700; margin-bottom: .3rem; color: var(--white); }
+    .trust-item p { font-size: .78rem; color: var(--slate); line-height: 1.5; }
+    .trust-quote {
+      margin-top: 2.5rem;
+      background: rgba(37,99,235,.08); border: 1px solid rgba(37,99,235,.2);
+      border-radius: 1rem; padding: 2rem 2.5rem;
+      position: relative;
+    }
+    .trust-quote::before {
+      content: '"'; position: absolute; top: -0.5rem; left: 2rem;
+      font-size: 5rem; font-family: Georgia, serif; line-height: 1;
+      color: rgba(37,99,235,.3);
+    }
+    .trust-quote blockquote { font-size: 1rem; color: var(--slate-light); font-style: italic; line-height: 1.7; margin-bottom: .75rem; }
+    .trust-quote cite { font-size: .75rem; color: var(--slate); text-transform: uppercase; letter-spacing: .1em; }
+
+    /* ── PRICING ── */
+    .pricing { padding: 5rem 2rem; background: var(--navy); }
+    .pricing-inner { max-width: 1100px; margin: 0 auto; }
+    .pricing h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; text-transform: uppercase; margin-bottom: .75rem;
+    }
+    .pricing-lead { color: var(--slate-light); max-width: 560px; margin-bottom: 1.75rem; }
+    .pricing-anchor {
+      background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.25);
+      border-radius: 1rem; padding: 1.25rem 1.75rem;
+      margin-bottom: 3rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .pricing-anchor i { color: var(--amber); font-size: 1.1rem; margin-top: .15rem; flex-shrink: 0; }
+    .pricing-anchor p { font-size: .9rem; color: var(--slate-light); line-height: 1.6; }
+    .pricing-anchor strong { color: var(--white); }
+
+    .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
+    .plan {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 1.25rem; padding: 2rem;
+      display: flex; flex-direction: column;
+      position: relative; transition: border-color .2s;
+    }
+    .plan:hover { border-color: rgba(255,255,255,.15); }
+    .plan.featured {
+      background: rgba(37,99,235,.1);
+      border-color: rgba(37,99,235,.5);
+    }
+    .plan.featured:hover { border-color: var(--blue); }
+    .plan-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--blue); color: #fff;
+      font-size: .6rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+      padding: .25rem .85rem; border-radius: 999px;
+      white-space: nowrap;
+    }
+    .plan-name {
+      font-family: var(--font-display);
+      font-size: .75rem; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--slate);
+      margin-bottom: .35rem;
+    }
+    .plan-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem; font-weight: 800; text-transform: uppercase;
+      color: var(--white); margin-bottom: .5rem;
+    }
+    .plan-desc { font-size: .8rem; color: var(--slate); margin-bottom: 1.5rem; }
+    .plan-price {
+      display: flex; align-items: baseline; gap: .25rem;
+      margin-bottom: 1.75rem;
+    }
+    .plan-price .amount {
+      font-family: var(--font-display);
+      font-size: 2.6rem; font-weight: 900; color: var(--white);
+    }
+    .plan-price .period { font-size: .8rem; color: var(--slate); }
+    .plan-divider { height: 1px; background: var(--border); margin-bottom: 1.5rem; }
+    .plan-features { list-style: none; flex: 1; display: flex; flex-direction: column; gap: .65rem; margin-bottom: 2rem; }
+    .plan-features li {
+      display: flex; align-items: flex-start; gap: .65rem;
+      font-size: .83rem; color: var(--slate-light);
+    }
+    .plan-features li i { color: var(--green); font-size: .75rem; margin-top: .25rem; flex-shrink: 0; }
+    .plan-features li.muted { color: var(--slate); }
+    .plan-features li.muted i { color: rgba(255,255,255,.2); }
+    .plan-cta {
+      display: block; text-align: center;
+      padding: .85rem; border-radius: .75rem;
+      font-family: var(--font-display);
+      font-weight: 700; font-size: .9rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none; transition: opacity .2s, transform .15s;
+    }
+    .plan-cta:hover { opacity: .88; transform: translateY(-1px); }
+    .plan-cta.outline {
+      border: 1px solid rgba(255,255,255,.2); color: var(--white);
+    }
+    .plan-cta.outline:hover { border-color: rgba(255,255,255,.4); }
+    .plan-cta.solid { background: var(--blue); color: #fff; }
+    .plan-cta.wapp { background: #25d366; color: #fff; }
+
+    .pricing-notes {
+      margin-top: 2rem; text-align: center;
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .pricing-notes span { font-size: .8rem; color: var(--slate); display: flex; align-items: center; gap: .4rem; }
+    .pricing-notes span i { color: var(--green); }
+
+    /* ── ONBOARDING ── */
+    .onboard { padding: 5rem 2rem; background: #070c18; border-top: 1px solid var(--border); }
+    .onboard-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+    .onboard h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .onboard-lead { color: var(--slate-light); margin-bottom: 3rem; }
+    .onboard-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .75rem; margin-bottom: 2.5rem; }
+    .onboard-step {
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+      border-radius: 1rem; padding: 1.75rem 1.25rem;
+      text-align: center;
+    }
+    .onboard-step .n {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 900;
+      color: rgba(37,99,235,.3); line-height: 1; margin-bottom: .75rem;
+    }
+    .onboard-step h5 {
+      font-family: var(--font-display); font-size: .95rem; font-weight: 700;
+      text-transform: uppercase; margin-bottom: .4rem;
+    }
+    .onboard-step p { font-size: .78rem; color: var(--slate); line-height: 1.5; }
+
+    /* ── FAQ ── */
+    .faq { padding: 5rem 2rem; background: var(--navy); }
+    .faq-inner { max-width: 760px; margin: 0 auto; }
+    .faq h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; text-transform: uppercase;
+      margin-bottom: 2.5rem; text-align: center;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: .75rem; }
+    .faq-item {
+      background: rgba(255,255,255,.03); border: 1px solid var(--border);
+      border-radius: 1rem; overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      padding: 1.25rem 1.5rem; text-align: left;
+      font-family: var(--font-body); font-size: .93rem; font-weight: 600;
+      color: var(--white);
+    }
+    .faq-q i { color: var(--blue-bright); font-size: .8rem; transition: transform .25s; flex-shrink: 0; }
+    .faq-a {
+      display: none; padding: 0 1.5rem 1.25rem;
+      font-size: .85rem; color: var(--slate-light); line-height: 1.7;
+    }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-q i { transform: rotate(180deg); }
+
+    /* ── CTA BAND ── */
+    .cta-band { padding: 5rem 2rem; background: var(--navy-light); border-top: 1px solid var(--border); }
+    .cta-band-inner {
+      max-width: 800px; margin: 0 auto; text-align: center;
+    }
+    .cta-band h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900; text-transform: uppercase;
+      margin-bottom: 1rem; line-height: .95;
+    }
+    .cta-band h2 em { font-style: normal; color: var(--blue-bright); }
+    .cta-band p { color: var(--slate-light); margin-bottom: 2.5rem; font-size: 1rem; }
+    .cta-band-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn-wapp {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: #25d366; color: #fff;
+      padding: 1rem 2.2rem; border-radius: .85rem;
+      font-family: var(--font-display); font-weight: 700; font-size: 1.1rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none; transition: opacity .2s, transform .15s;
+    }
+    .btn-wapp:hover { opacity: .9; transform: translateY(-2px); }
+    .cta-note { margin-top: 1.25rem; font-size: .8rem; color: var(--slate); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #070c18; border-top: 1px solid var(--border);
+      padding: 3.5rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-brand { font-family: var(--font-display); font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .5rem; }
+    .footer-tagline { font-size: .8rem; color: var(--blue-bright); font-style: italic; margin-bottom: 1rem; }
+    .footer-clients { font-size: .7rem; color: var(--slate); letter-spacing: .1em; text-transform: uppercase; }
+    footer h5 { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--slate); margin-bottom: 1rem; }
+    footer p, footer a { font-size: .85rem; color: var(--slate-light); text-decoration: none; line-height: 1.8; }
+    footer a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 1.5rem;
+      text-align: center; font-size: .7rem; color: var(--slate);
+      letter-spacing: .15em; text-transform: uppercase;
+    }
+
+    /* ── STICKY MOBILE CTA ── */
+    .sticky-wapp {
+      display: none;
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 300;
+    }
+    .sticky-wapp a {
+      display: flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: #25d366; color: #fff; font-size: 1.5rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      text-decoration: none; transition: transform .2s;
+    }
+    .sticky-wapp a:hover { transform: scale(1.08); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-right { display: none; }
+      .models-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .sticky-wapp { display: block; }
+      nav .nav-cta span { display: none; }
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+  </style>
 </head>
-<body class="bg-white text-slate-900">
+<body>
 
-    <nav class="flex justify-between items-center px-8 py-6 sticky top-0 bg-white z-[100] border-b border-slate-100">
-        <div class="flex items-center space-x-3">
-            <img src="https://github.com/sithetshidiso-lab/BevCount360-web/blob/00b23ad6e8f0429d9043d650367f5969d69c695b/file_00000000b098622fa0fd31f5837c0e59%20(1).png?raw=true" class="h-10">
-            <span class="text-2xl font-black tracking-tighter uppercase">BevCount360</span>
-        </div>
-        <a href="https://wa.me/27813155226" class="bg-[#0f172a] text-white px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest">Chat on WhatsApp</a>
-    </nav>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <img src="https://github.com/sithetshidiso-lab/BevCount360-web/blob/00b23ad6e8f0429d9043d650367f5969d69c695b/file_00000000b098622fa0fd31f5837c0e59%20(1).png?raw=true" alt="BevCount360 logo" onerror="this.style.display='none'">
+    BevCount360
+  </a>
+  <a href="https://wa.me/27813155226?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20BevCount360" class="nav-cta">
+    <i class="fab fa-whatsapp"></i>
+    <span>Chat on WhatsApp</span>
+  </a>
+</nav>
 
-    <header class="relative bg-[#0f172a] pt-32 pb-44 px-6 overflow-hidden">
-        <div class="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <span class="text-blue-500 font-black uppercase tracking-[0.3em] text-sm mb-6 block">Inventory Specialists</span>
-                <h1 class="text-5xl md:text-7xl font-black text-white leading-[0.9] mb-8 tracking-tighter uppercase">
-                    LET'S COUNT <br><span class="text-blue-600">WHAT MATTERS.</span>
-                </h1>
-                <p class="text-slate-400 text-lg mb-10 max-w-lg">
-                    We count your stock by hand and give you simple digital reports so you can stop losing money and grow your business.
-                </p>
-                <a href="https://wa.me/27813155226?text=I'm%20interested%20in%20a%20stock%20count%20trial" class="bg-blue-600 text-white px-10 py-5 rounded-xl font-black text-lg shadow-xl hover:bg-blue-700 transition">BOOK YOUR TRIAL</a>
-            </div>
-            <div class="hidden md:block">
-                <div class="tablet-mockup glass-card p-4 rounded-[2.5rem] border border-white/20">
-                    <div class="bg-slate-900 rounded-[2rem] p-8 flex flex-col items-center justify-center min-h-[400px]">
-                        <img src="https://github.com/sithetshidiso-lab/BevCount360-web/blob/00b23ad6e8f0429d9043d650367f5969d69c695b/file_00000000b098622fa0fd31f5837c0e59%20(1).png?raw=true" class="w-32">
-                        <p class="text-blue-500 text-xs font-black uppercase tracking-widest mt-6">Digital Reporting Active</p>
-                    </div>
-                </div>
-            </div>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <span></span>
+        Live in active outlets across South Africa
+      </div>
+      <h1>
+        Know exactly<br>
+        where your<br>
+        <em>stock went.</em>
+      </h1>
+      <p class="hero-sub">
+        BevCount360 gives taverns, liquor outlets, restaurants, and informal retailers complete operational control — over stock, sales, cash, and staff accountability.
+      </p>
+      <div class="hero-actions">
+        <a href="#pricing" class="btn-primary">
+          <i class="fas fa-arrow-right"></i> See Pricing
+        </a>
+        <a href="https://wa.me/27813155226?text=Hi%2C%20I%20run%20a%20business%20and%20I%27d%20like%20to%20learn%20how%20BevCount360%20works%20for%20my%20situation." class="btn-ghost">
+          <i class="fab fa-whatsapp"></i> Talk to Us
+        </a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="fas fa-boxes-stacked"></i></div>
+        <div>
+          <div class="stat-label">Stock Visibility</div>
+          <div class="stat-value">Real-Time</div>
         </div>
-    </header>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon amber"><i class="fas fa-triangle-exclamation"></i></div>
+        <div>
+          <div class="stat-label">Avg. Monthly Shrinkage (Untracked)</div>
+          <div class="stat-value">R3K – R8K</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="fas fa-chart-line"></i></div>
+        <div>
+          <div class="stat-label">Variance Detection</div>
+          <div class="stat-value">Every Count</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="fas fa-mobile-screen"></i></div>
+        <div>
+          <div class="stat-label">Works On</div>
+          <div class="stat-value">Android + Mobile</div>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <i class="fas fa-circle-check"></i>
+        <p><strong>No IT team needed.</strong> We set it up with you. You're live within 24–48 hours.</p>
+      </div>
+    </div>
+  </div>
+</header>
 
-    <section class="py-24 px-6 bg-white">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-4xl font-bold text-slate-900 mb-4">Comprehensive Inventory Solutions</h2>
-            <p class="text-slate-500 mb-16 max-w-2xl mx-auto">Our hybrid approach combines professional expertise with cutting-edge technology</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-10 border border-slate-100 rounded-2xl flex flex-col items-center hover-lift">
-                    <div class="bg-blue-50 p-4 rounded-lg mb-6"><i class="fas fa-users text-blue-600 text-2xl"></i></div>
-                    <h4 class="font-bold text-lg mb-4">Field Service</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">Scheduled physical stock counts conducted by our professional team at your location.</p>
-                </div>
-                <div class="p-10 border border-slate-100 rounded-2xl flex flex-col items-center hover-lift">
-                    <div class="bg-blue-50 p-4 rounded-lg mb-6"><i class="fas fa-mobile-alt text-blue-600 text-2xl"></i></div>
-                    <h4 class="font-bold text-lg mb-4">Hybrid SaaS</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">Digital tools for daily cash-ups, incoming stock logs, and comprehensive expense tracking.</p>
-                </div>
-                <div class="p-10 border border-slate-100 rounded-2xl flex flex-col items-center hover-lift">
-                    <div class="bg-blue-50 p-4 rounded-lg mb-6"><i class="fas fa-file-alt text-blue-600 text-2xl"></i></div>
-                    <h4 class="font-bold text-lg mb-4">Reporting</h4>
-                    <p class="text-slate-500 text-sm leading-relaxed">Verified stock count reports delivered within 72 hours with detailed analytics.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- PAIN SECTION -->
+<section class="pain">
+  <div class="pain-inner">
+    <p class="section-label">The Problem</p>
+    <h2 class="fade-up">Sound familiar?</h2>
+    <p class="pain-lead fade-up">Most small business owners know something is wrong. They just can't prove it — or stop it — without the right tools.</p>
+    <div class="pain-grid">
+      <div class="pain-card fade-up">
+        <i class="fas fa-xmark"></i>
+        <p><strong>Your closing stock never matches what you sold.</strong> Every count reveals a gap you can't explain.</p>
+      </div>
+      <div class="pain-card fade-up">
+        <i class="fas fa-xmark"></i>
+        <p><strong>You don't know who's responsible</strong> when stock goes missing. Everyone has a different story.</p>
+      </div>
+      <div class="pain-card fade-up">
+        <i class="fas fa-xmark"></i>
+        <p><strong>You're buying more stock than you should</strong> because you can't see what's selling and what's sitting.</p>
+      </div>
+      <div class="pain-card fade-up">
+        <i class="fas fa-xmark"></i>
+        <p><strong>Your cash doesn't match your sales</strong> at end of day, and you can't trace where the difference went.</p>
+      </div>
+    </div>
+    <div class="pain-cta fade-up">
+      <div>
+        <strong>BevCount360 was built for exactly this situation.</strong>
+        <p>Not for enterprise. Not for big chains. For real, working businesses like yours — where every rand matters.</p>
+      </div>
+      <a href="#models" class="btn-primary" style="white-space:nowrap">
+        <i class="fas fa-arrow-right"></i> See How It Works
+      </a>
+    </div>
+  </div>
+</section>
 
-    <section class="pb-24 px-6">
-        <div class="max-w-5xl mx-auto bg-blue-600 rounded-[3rem] p-12 md:p-20 text-center text-white shadow-2xl">
-            <h2 class="text-4xl md:text-6xl font-black mb-6 uppercase">The R1,200 Challenge.</h2>
-            <p class="text-blue-100 text-xl mb-12">2 Full Physical Counts. 2 Detailed Variance Reports.</p>
-            <a href="https://wa.me/27813155226?text=I%20want%20to%20take%20the%20R1200%20Challenge" class="bg-white text-blue-600 px-16 py-5 rounded-full font-black text-sm uppercase tracking-widest hover:bg-slate-100 transition">Claim Trial Now</a>
+<!-- DUAL MODEL -->
+<section class="models" id="models">
+  <div class="models-inner">
+    <p class="section-label">Your Business, Your Way</p>
+    <h2 class="fade-up">Which type of outlet are you?</h2>
+    <p class="models-lead fade-up">BevCount360 works in two operational modes. Pick the one that fits how you already run your business — no need to change anything you don't want to.</p>
+    <div class="models-grid">
+      <!-- POS MODE -->
+      <div class="model-card pos fade-up">
+        <div class="model-tag pos"><i class="fas fa-cash-register"></i> Model A</div>
+        <h3>POS-Driven Outlet</h3>
+        <p>You sell through a till or tablet. BevCount360's POS system runs your checkout and automatically tracks every sale against your stock — in real time.</p>
+        <ul class="model-list">
+          <li><i class="fas fa-check pos-icon"></i> Product-level sales tracking per transaction</li>
+          <li><i class="fas fa-check pos-icon"></i> Barcode scanning for fast, accurate checkout</li>
+          <li><i class="fas fa-check pos-icon"></i> Stock automatically deducted on every sale</li>
+          <li><i class="fas fa-check pos-icon"></i> POS dashboard — see sales and stock live</li>
+          <li><i class="fas fa-check pos-icon"></i> Built for speed during peak hours</li>
+          <li><i class="fas fa-check pos-icon"></i> Tablet and mobile ready</li>
+        </ul>
+        <div class="model-fits">
+          <div class="model-fits-label">Best for</div>
+          <div class="model-fits-tags">
+            <span class="fit-tag">Restaurants</span>
+            <span class="fit-tag">Bottle Stores</span>
+            <span class="fit-tag">Food Outlets</span>
+            <span class="fit-tag">Retail Shops</span>
+          </div>
         </div>
-    </section>
+      </div>
+      <!-- STOCK MODE -->
+      <div class="model-card stock fade-up">
+        <div class="model-tag stock"><i class="fas fa-boxes-stacked"></i> Model B</div>
+        <h3>Stock-Movement Outlet</h3>
+        <p>You already use another POS, or you count manually. BevCount360 plugs in as your operational backbone — tracking purchases, wastage, and closing stock to show you exactly where stock went.</p>
+        <ul class="model-list">
+          <li><i class="fas fa-check stock-icon"></i> Sales inferred through stock movement analysis</li>
+          <li><i class="fas fa-check stock-icon"></i> Opening stock → purchases → wastage → closing</li>
+          <li><i class="fas fa-check stock-icon"></i> Variance detection on every count cycle</li>
+          <li><i class="fas fa-check stock-icon"></i> Shrinkage identification and audit trails</li>
+          <li><i class="fas fa-check stock-icon"></i> Operational reports delivered to you</li>
+          <li><i class="fas fa-check stock-icon"></i> Works alongside any existing system</li>
+        </ul>
+        <div class="model-fits">
+          <div class="model-fits-label">Best for</div>
+          <div class="model-fits-tags">
+            <span class="fit-tag">Taverns</span>
+            <span class="fit-tag">Liquor Outlets</span>
+            <span class="fit-tag">Bakeries</span>
+            <span class="fit-tag">Hybrid Businesses</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="models-note fade-up"><strong>Not sure which model fits you?</strong> Chat to us on WhatsApp — we'll tell you in 5 minutes. Most businesses use elements of both.</p>
+  </div>
+</section>
 
-    <section class="py-24 px-6 bg-slate-50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h3 class="text-4xl font-bold uppercase">Flexible Pricing Plans</h3>
-                <p class="text-slate-500 mt-2">Choose the package that fits your business needs</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-10 rounded-2xl border border-slate-200 flex flex-col hover-lift">
-                    <h4 class="font-bold mb-1 uppercase text-sm">App-Only Package</h4>
-                    <p class="text-xs text-slate-400 mb-4">Client manages stock counting</p>
-                    <div class="text-4xl font-bold mb-8">R599<span class="text-sm font-normal text-slate-400">/month</span></div>
-                    <ul class="text-sm space-y-4 mb-10 text-slate-600 flex-grow">
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> App access for daily operations</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Basic reporting tools</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Email support</li>
-                    </ul>
-                    <a href="https://wa.me/27813155226?text=I%20am%20interested%20in%20the%20App-Only%20Package" class="block w-full text-center border border-slate-200 py-3 rounded-lg text-xs font-bold uppercase hover:bg-slate-50">Get Started</a>
-                </div>
-                <div class="bg-white p-10 rounded-2xl border border-slate-200 flex flex-col hover-lift">
-                    <h4 class="font-bold mb-1 uppercase text-sm">Basic Package</h4>
-                    <p class="text-xs text-slate-400 mb-4">Perfect for small outlets</p>
-                    <div class="text-4xl font-bold mb-8">R1200<span class="text-sm font-normal text-slate-400">/month</span></div>
-                    <ul class="text-sm space-y-4 mb-10 text-slate-600 flex-grow">
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> 1 stock count per month</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Full app access</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Comprehensive reporting</li>
-                    </ul>
-                    <a href="https://wa.me/27813155226?text=I%20am%20interested%20in%20the%20Basic%20Package" class="block w-full text-center border border-slate-200 py-3 rounded-lg text-xs font-bold uppercase hover:bg-slate-50">Get Started</a>
-                </div>
-                <div class="bg-white p-10 rounded-2xl border-2 border-blue-600 flex flex-col relative shadow-xl hover-lift">
-                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] px-4 py-1 rounded-full font-bold uppercase">Most Popular</span>
-                    <h4 class="font-bold mb-1 uppercase text-sm">Standard Package</h4>
-                    <p class="text-xs text-slate-400 mb-4">Ideal for growing businesses</p>
-                    <div class="text-4xl font-bold mb-8">R1900<span class="text-sm font-normal text-slate-400">/month</span></div>
-                    <ul class="text-sm space-y-4 mb-10 text-slate-600 flex-grow">
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> 2 stock counts per month</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Full app access</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Advanced reporting</li>
-                    </ul>
-                    <a href="https://wa.me/27813155226?text=I%20am%20interested%20in%20the%20Standard%20Package" class="block w-full text-center bg-blue-600 text-white py-3 rounded-lg text-xs font-bold uppercase hover:bg-blue-700">Get Started</a>
-                </div>
-                <div class="bg-white p-10 rounded-2xl border border-slate-200 flex flex-col hover-lift">
-                    <h4 class="font-bold mb-1 uppercase text-sm">Premium Package</h4>
-                    <p class="text-xs text-slate-400 mb-4">Complete inventory management</p>
-                    <div class="text-4xl font-bold mb-8">R3000<span class="text-sm font-normal text-slate-400">/month</span></div>
-                    <ul class="text-sm space-y-4 mb-10 text-slate-600 flex-grow">
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Weekly stock counts</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Staff training included</li>
-                        <li><i class="fas fa-check text-blue-500 mr-2"></i> Custom integrations</li>
-                    </ul>
-                    <a href="https://wa.me/27813155226?text=I%20am%20interested%20in%20the%20Premium%20Package" class="block w-full text-center border border-slate-200 py-3 rounded-lg text-xs font-bold uppercase hover:bg-slate-50">Get Started</a>
-                </div>
-            </div>
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-inner">
+    <p class="section-label" style="text-align:center">The Operational Rhythm</p>
+    <h2 class="fade-up">How BevCount360 works</h2>
+    <p class="how-lead fade-up">A simple daily and monthly rhythm that gives you visibility without complexity.</p>
+    <div class="steps">
+      <div class="step fade-up">
+        <div class="step-left"><div class="step-num s1">1</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h4>Set up your products and suppliers</h4>
+          <p>Load your stock catalogue, categories, pricing, and supplier details once. We help you do this in your first session — takes under an hour for most outlets.</p>
         </div>
-    </section>
+      </div>
+      <div class="step fade-up">
+        <div class="step-left"><div class="step-num s2">2</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h4>Record every movement — daily</h4>
+          <p>Sales (via POS or manual), incoming stock from suppliers, wastage, and transfers. The system builds your operational picture in real time as your staff logs activity.</p>
+        </div>
+      </div>
+      <div class="step fade-up">
+        <div class="step-left"><div class="step-num s3">3</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h4>Count and reconcile on schedule</h4>
+          <p>Physical stock counts — done by your team or ours — are logged into the system. BevCount360 instantly calculates variance: expected stock vs actual stock. Any gap is visible, named, and documented.</p>
+        </div>
+      </div>
+      <div class="step fade-up">
+        <div class="step-left"><div class="step-num s4">4</div><div class="step-line"></div></div>
+        <div class="step-body">
+          <h4>See your operational report</h4>
+          <p>Get a clear summary of what came in, what went out, what was sold, what's missing, and whether your cash matches your numbers. No guesswork. No spreadsheets. Just answers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="py-24 px-6 bg-white">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-4xl font-bold text-slate-900 mb-4">Powerful Features</h2>
-            <p class="text-slate-500 mb-16">Everything you need to manage your inventory efficiently</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
-                    <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-dollar-sign"></i></div>
-                    <h5 class="font-bold mb-2 uppercase text-xs">Daily Cash-Up Tracking</h5>
-                    <p class="text-sm text-slate-500 leading-relaxed">Monitor daily sales and reconcile cash flow effortlessly.</p>
-                </div>
-                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
-                    <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-box"></i></div>
-                    <h5 class="font-bold mb-2 uppercase text-xs">Incoming Stock Recording</h5>
-                    <p class="text-sm text-slate-500 leading-relaxed">Log all incoming inventory with timestamps and supplier details.</p>
-                </div>
-                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
-                    <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-receipt"></i></div>
-                    <h5 class="font-bold mb-2 uppercase text-xs">Expense Tracking</h5>
-                    <p class="text-sm text-slate-500 leading-relaxed">Track all operational expenses in one centralized system.</p>
-                </div>
-                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
-                    <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-chart-line"></i></div>
-                    <h5 class="font-bold mb-2 uppercase text-xs">Monthly & Weekly Reporting</h5>
-                    <p class="text-sm text-slate-500 leading-relaxed">Get comprehensive insights with customizable reporting periods.</p>
-                </div>
-                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
-                    <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-graduation-cap"></i></div>
-                    <h5 class="font-bold mb-2 uppercase text-xs">Staff Training</h5>
-                    <p class="text-sm text-slate-500 leading-relaxed">Premium package includes comprehensive staff training and onboarding.</p>
-                </div>
-                <div class="bg-slate-50 p-8 rounded-xl text-left hover-lift">
-                    <div class="bg-blue-50 w-10 h-10 flex items-center justify-center rounded mb-6 text-blue-600"><i class="fas fa-mobile-alt"></i></div>
-                    <h5 class="font-bold mb-2 uppercase text-xs">Mobile Access</h5>
-                    <p class="text-sm text-slate-500 leading-relaxed">Access your data anywhere, anytime with our mobile app.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-inner">
+    <p class="section-label">Platform Capabilities</p>
+    <h2 class="fade-up">Everything in one system</h2>
+    <p class="features-lead fade-up">Built specifically for the operational reality of informal and semi-formal businesses — not adapted from enterprise software.</p>
+    <div class="features-grid">
+      <div class="feat-card fade-up">
+        <div class="feat-icon"><i class="fas fa-layer-group"></i></div>
+        <h5>Inventory Management</h5>
+        <p>Create and manage products by category. Track quantity, cost, and pricing across your full catalogue.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon"><i class="fas fa-cash-register"></i></div>
+        <h5>POS System</h5>
+        <p>Product grid, barcode scanning, cart and checkout. Fast, reliable, and built for peak-hour pressure.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon"><i class="fas fa-chart-bar"></i></div>
+        <h5>Operational Reporting</h5>
+        <p>Stock movement summaries, variance reports, and sales analysis. Delivered in a clear, readable format.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon"><i class="fas fa-money-bill-wave"></i></div>
+        <h5>Cash-Up Reconciliation</h5>
+        <p>Manual and system-assisted cash reconciliation. Close every day knowing your cash matches your sales.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon"><i class="fas fa-truck"></i></div>
+        <h5>Supplier & Purchase Tracking</h5>
+        <p>Log every delivery with timestamps and supplier details. Know exactly what stock came in and when.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+        <h5>Variance Detection</h5>
+        <p>Every count cycle compares expected stock to physical count. Gaps are flagged, quantified, and auditable.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon"><i class="fas fa-clipboard-list"></i></div>
+        <h5>Stock Count Cycles</h5>
+        <p>Structured count workflows ensure consistency. Supports both self-counting and managed counting by our team.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon"><i class="fas fa-shield-halved"></i></div>
+        <h5>Audit Logs & Accountability</h5>
+        <p>Every action is logged with a timestamp. Hold your team accountable with a clear operational record.</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon"><i class="fas fa-wifi"></i></div>
+        <h5>Offline-Tolerant</h5>
+        <p>Built for unstable LTE environments. The system keeps working even when your connection drops.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="py-24 px-6 bg-white border-t border-slate-100">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4">Our Commitment to You</h2>
-            <p class="text-slate-500 mb-16">Reliability and excellence in every interaction</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="flex flex-col items-center">
-                    <div class="bg-blue-50 w-12 h-12 flex items-center justify-center rounded-full mb-6 text-blue-600"><i class="far fa-clock text-xl"></i></div>
-                    <h5 class="font-bold mb-4">72-Hour Delivery Guarantee</h5>
-                    <p class="text-sm text-slate-500 leading-relaxed">Receive your comprehensive stock count reports within 72 hours, every time.</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="bg-blue-50 w-12 h-12 flex items-center justify-center rounded-full mb-6 text-blue-600"><i class="fas fa-shield-alt text-xl"></i></div>
-                    <h5 class="font-bold mb-4">Data Integrity & Confidentiality</h5>
-                    <p class="text-sm text-slate-500 leading-relaxed">Your business data is encrypted and protected with enterprise-grade security.</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="bg-blue-50 w-12 h-12 flex items-center justify-center rounded-full mb-6 text-blue-600"><i class="fas fa-headphones-alt text-xl"></i></div>
-                    <h5 class="font-bold mb-4">Onboarding Guidance & Support</h5>
-                    <p class="text-sm text-slate-500 leading-relaxed">Dedicated support team to ensure smooth implementation and ongoing success.</p>
-                </div>
-            </div>
+<!-- TRUST -->
+<section class="trust">
+  <div class="trust-inner">
+    <p class="section-label">Why Operators Trust Us</p>
+    <h2 class="fade-up">This is a live, working system</h2>
+    <p class="trust-lead fade-up">BevCount360 is not a demo product. It runs in active outlets every day. Built for the real conditions your business operates in.</p>
+    <div class="trust-grid">
+      <div class="trust-item fade-up">
+        <i class="fas fa-circle-check"></i>
+        <div>
+          <h5>Live in active outlets</h5>
+          <p>Running in real taverns, bottle stores, and restaurants across South Africa right now.</p>
         </div>
-    </section>
+      </div>
+      <div class="trust-item fade-up">
+        <i class="fas fa-circle-check"></i>
+        <div>
+          <h5>Built for LTE environments</h5>
+          <p>Handles poor or unstable connectivity. Caching and offline tolerance built into the core.</p>
+        </div>
+      </div>
+      <div class="trust-item fade-up">
+        <i class="fas fa-circle-check"></i>
+        <div>
+          <h5>Android tablet & mobile</h5>
+          <p>No expensive hardware required. Works on the devices your staff already use.</p>
+        </div>
+      </div>
+      <div class="trust-item fade-up">
+        <i class="fas fa-circle-check"></i>
+        <div>
+          <h5>WhatsApp support</h5>
+          <p>Reach us the same way you reach your suppliers. Fast, human, and always open.</p>
+        </div>
+      </div>
+      <div class="trust-item fade-up">
+        <i class="fas fa-circle-check"></i>
+        <div>
+          <h5>No IT team needed</h5>
+          <p>We configure everything with you. Most outlets are fully live within 24–48 hours.</p>
+        </div>
+      </div>
+      <div class="trust-item fade-up">
+        <i class="fas fa-circle-check"></i>
+        <div>
+          <h5>Updated from real feedback</h5>
+          <p>Every feature exists because a real operator needed it. Built in the field, not in a boardroom.</p>
+        </div>
+      </div>
+    </div>
+    <div class="trust-quote fade-up">
+      <blockquote>Before BevCount360, every month-end was a guessing game. Now I can see exactly what came in, what went out, and where the gap is. The first count alone showed me I was losing stock I didn't even know was gone.</blockquote>
+      <cite>— Tavern owner, Gauteng</cite>
+    </div>
+  </div>
+</section>
 
-    <section class="py-24 px-6 bg-slate-50">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-16">Frequently Asked Questions</h2>
-            <div class="space-y-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <h4 class="font-bold text-sm mb-3">How accurate are the physical stock counts?</h4>
-                    <p class="text-xs text-slate-500 leading-relaxed">Our team uses a double-blind counting method to ensure 99.9% accuracy, which is then reconciled with your sales logs.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <h4 class="font-bold text-sm mb-3">Can I use the app without the field service?</h4>
-                    <p class="text-slate-500 text-xs leading-relaxed">Yes, our App-Only package is designed for owners who prefer to handle the counting themselves but want the reporting tools.</p>
-                </div>
-            </div>
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <p class="section-label">Transparent Pricing</p>
+    <h2 class="fade-up">Straightforward plans. No surprises.</h2>
+    <p class="pricing-lead fade-up">Choose the level of support that fits how you operate. All plans include full app access.</p>
+    <div class="pricing-anchor fade-up">
+      <i class="fas fa-lightbulb"></i>
+      <p>The average liquor outlet or tavern loses between <strong>R3,000 and R8,000 per month</strong> to untracked stock, shrinkage, and cash variance — most owners don't see it because they don't have the tools to measure it. BevCount360 typically pays for itself within the first count cycle.</p>
+    </div>
+    <div class="plans-grid">
+      <!-- PLAN 1 -->
+      <div class="plan fade-up">
+        <div class="plan-name">Solo Operator</div>
+        <div class="plan-title">App Only</div>
+        <div class="plan-desc">You manage your own counts. We give you the tools and reporting.</div>
+        <div class="plan-price">
+          <span class="amount">R599</span>
+          <span class="period">/month</span>
         </div>
-    </section>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Full app access — all modules</li>
+          <li><i class="fas fa-check"></i> POS or stock-movement mode</li>
+          <li><i class="fas fa-check"></i> Inventory management</li>
+          <li><i class="fas fa-check"></i> Basic reporting</li>
+          <li><i class="fas fa-check"></i> WhatsApp support</li>
+          <li class="muted"><i class="fas fa-check"></i> Physical counts by our team</li>
+          <li class="muted"><i class="fas fa-check"></i> Variance reports</li>
+        </ul>
+        <a href="https://wa.me/27813155226?text=Hi%2C%20I%27m%20interested%20in%20the%20App%20Only%20plan%20at%20R599%2Fmonth." class="plan-cta outline">Get Started</a>
+      </div>
+      <!-- PLAN 2 -->
+      <div class="plan fade-up">
+        <div class="plan-name">Active Outlet</div>
+        <div class="plan-title">Managed Basic</div>
+        <div class="plan-desc">Includes one physical stock count per month with a detailed variance report.</div>
+        <div class="plan-price">
+          <span class="amount">R1,200</span>
+          <span class="period">/month</span>
+        </div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Everything in App Only</li>
+          <li><i class="fas fa-check"></i> 1 physical stock count / month</li>
+          <li><i class="fas fa-check"></i> Detailed variance report</li>
+          <li><i class="fas fa-check"></i> Comprehensive reporting suite</li>
+          <li><i class="fas fa-check"></i> WhatsApp support</li>
+          <li class="muted"><i class="fas fa-check"></i> 2nd count / month</li>
+          <li class="muted"><i class="fas fa-check"></i> Advanced analytics</li>
+        </ul>
+        <a href="https://wa.me/27813155226?text=Hi%2C%20I%27m%20interested%20in%20the%20Managed%20Basic%20plan%20at%20R1200%2Fmonth." class="plan-cta outline">Get Started</a>
+      </div>
+      <!-- PLAN 3 (FEATURED) -->
+      <div class="plan featured fade-up">
+        <div class="plan-badge">Most Popular</div>
+        <div class="plan-name">Growing Business</div>
+        <div class="plan-title">Managed Standard</div>
+        <div class="plan-desc">Two counts per month with advanced reporting. Ideal for high-volume outlets.</div>
+        <div class="plan-price">
+          <span class="amount">R1,900</span>
+          <span class="period">/month</span>
+        </div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Everything in Managed Basic</li>
+          <li><i class="fas fa-check"></i> 2 physical stock counts / month</li>
+          <li><i class="fas fa-check"></i> Advanced variance analysis</li>
+          <li><i class="fas fa-check"></i> Full operational reporting</li>
+          <li><i class="fas fa-check"></i> Priority WhatsApp support</li>
+          <li><i class="fas fa-check"></i> Staff accountability tools</li>
+          <li class="muted"><i class="fas fa-check"></i> Weekly counts</li>
+        </ul>
+        <a href="https://wa.me/27813155226?text=Hi%2C%20I%27m%20interested%20in%20the%20Managed%20Standard%20plan%20at%20R1900%2Fmonth." class="plan-cta solid">Get Started</a>
+      </div>
+      <!-- PLAN 4 -->
+      <div class="plan fade-up">
+        <div class="plan-name">Full Control</div>
+        <div class="plan-title">Managed Premium</div>
+        <div class="plan-desc">Weekly counts, maximum oversight. Built for outlets where accuracy is everything.</div>
+        <div class="plan-price">
+          <span class="amount">R3,000</span>
+          <span class="period">/month</span>
+        </div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><i class="fas fa-check"></i> Everything in Managed Standard</li>
+          <li><i class="fas fa-check"></i> Weekly stock counts</li>
+          <li><i class="fas fa-check"></i> Staff training included</li>
+          <li><i class="fas fa-check"></i> Custom reporting setup</li>
+          <li><i class="fas fa-check"></i> Dedicated account support</li>
+          <li><i class="fas fa-check"></i> Multi-outlet capable</li>
+          <li><i class="fas fa-check"></i> Priority onboarding</li>
+        </ul>
+        <a href="https://wa.me/27813155226?text=Hi%2C%20I%27m%20interested%20in%20the%20Managed%20Premium%20plan%20at%20R3000%2Fmonth." class="plan-cta wapp"><i class="fab fa-whatsapp"></i> Let's Talk</a>
+      </div>
+    </div>
+    <div class="pricing-notes">
+      <span><i class="fas fa-check"></i> No setup fees</span>
+      <span><i class="fas fa-check"></i> No long-term contracts</span>
+      <span><i class="fas fa-check"></i> Cancel anytime</span>
+      <span><i class="fas fa-check"></i> WhatsApp support on all plans</span>
+      <span><i class="fas fa-check"></i> Reports delivered within 72 hours</span>
+    </div>
+  </div>
+</section>
 
-    <footer class="bg-[#0f172a] text-white pt-24 pb-12 px-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-20">
-            <div>
-                <img src="https://github.com/sithetshidiso-lab/BevCount360-web/blob/00b23ad6e8f0429d9043d650367f5969d69c695b/file_00000000b098622fa0fd31f5837c0e59%20(1).png?raw=true" class="h-8 mb-6">
-                <p class="text-blue-500 font-bold italic text-sm">Let's count what matters</p>
-                <p class="text-xs text-slate-500 mt-6 uppercase tracking-widest">Broadway Place | Kroll's Inn | Mokgadi's | Matlapeng</p>
-            </div>
-            <div>
-                <h5 class="text-xs font-black uppercase text-slate-500 mb-8 tracking-widest">Head Office</h5>
-                <p class="text-sm font-bold leading-loose">1496 Lesotho Street, <br>Far East Bank, Alexandra,<br>2090</p>
-            </div>
-            <div>
-                <h5 class="text-xs font-black uppercase text-slate-500 mb-8 tracking-widest">Contact Information</h5>
-                <p class="text-lg font-bold mb-2 text-blue-500">+27 81 315 5226</p>
-                <p class="text-slate-500 text-xs font-bold uppercase mb-2">Mon - Fri: 08:00 - 17:00</p>
-                <a href="https://wa.me/27813155226" class="text-blue-400 text-xs font-bold">WhatsApp Always Open</a>
-            </div>
-        </div>
-        <div class="text-center text-[10px] text-slate-600 font-black uppercase tracking-[0.5em] mt-16">
-            &copy; 2026 BEVCOUNT360. ALL RIGHTS RESERVED.
-        </div>
-    </footer>
+<!-- ONBOARDING -->
+<section class="onboard">
+  <div class="onboard-inner">
+    <p class="section-label">Getting Started</p>
+    <h2 class="fade-up">You're live in 48 hours</h2>
+    <p class="onboard-lead fade-up">We set everything up with you. No IT team, no technical knowledge, no delays.</p>
+    <div class="onboard-steps">
+      <div class="onboard-step fade-up">
+        <div class="n">01</div>
+        <h5>Chat to Us</h5>
+        <p>Tell us about your outlet on WhatsApp — what you sell, how you operate, what's not working.</p>
+      </div>
+      <div class="onboard-step fade-up">
+        <div class="n">02</div>
+        <h5>We Configure</h5>
+        <p>We set up BevCount360 for your specific business. Products, suppliers, reporting — all done for you.</p>
+      </div>
+      <div class="onboard-step fade-up">
+        <div class="n">03</div>
+        <h5>Your Team Learns</h5>
+        <p>Simple, short training session via WhatsApp or in-person. Most staff are comfortable in under an hour.</p>
+      </div>
+      <div class="onboard-step fade-up">
+        <div class="n">04</div>
+        <h5>You're Live</h5>
+        <p>From day one, every sale, delivery, and count goes into the system. You see the picture forming.</p>
+      </div>
+      <div class="onboard-step fade-up">
+        <div class="n">05</div>
+        <h5>First Report</h5>
+        <p>After your first count cycle, you get your first variance report. That's the moment everything becomes clear.</p>
+      </div>
+    </div>
+    <a href="https://wa.me/27813155226?text=Hi%2C%20I%27d%20like%20to%20get%20started%20with%20BevCount360.%20I%20run%20a%20%5Btavern%2Frestaurant%2Fbottle%20store%5D." class="btn-wapp">
+      <i class="fab fa-whatsapp"></i> Start the Conversation
+    </a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <h2 class="fade-up">Common Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do I need to buy special hardware?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">No. BevCount360 runs on standard Android tablets and mobile phones. If you have a device your staff already use, that's enough to get started.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if my internet connection is unreliable?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">BevCount360 is built for exactly this. The system includes offline tolerance and caching — it keeps working even when your LTE drops. Data syncs when your connection returns.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I use BevCount360 without a POS system?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Absolutely. Many of our outlets use the Stock-Movement model — tracking purchases, wastage, and closing stock without a till. If you count stock, BevCount360 works for you.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          I already use another POS. Can I still use BevCount360?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Yes. BevCount360 operates alongside your existing POS as your operational control and stock management layer. You don't need to change how you sell.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Who does the physical stock counts?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">On App-Only plans, you count your own stock using the system. On Managed plans (Basic, Standard, Premium), our team comes to your location to conduct the counts professionally, using a verified double-check method.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How long does setup take?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Most outlets are fully configured and live within 24–48 hours of signing up. We do the heavy lifting — you just need to confirm your product list and we handle the rest.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is this only for liquor outlets?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">No. BevCount360 works for taverns, bottle stores, restaurants, bakeries, informal retail shops, and any hybrid cash-and-stock business. If you buy stock and sell it, the platform applies to you.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What happens to my data if I cancel?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-a">Your data belongs to you. If you cancel, we can provide you with an export of your records. There are no lock-in contracts — you stay because the system works, not because you're trapped.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="cta-band-inner">
+    <h2 class="fade-up">Stop guessing.<br>Start <em>knowing.</em></h2>
+    <p class="fade-up">Tell us about your business on WhatsApp. We'll show you exactly how BevCount360 works for your situation — no jargon, no pressure, no commitment.</p>
+    <div class="cta-band-actions">
+      <a href="https://wa.me/27813155226?text=Hi%2C%20I%20run%20a%20%5Btavern%2Frestaurant%2Fbottle%20store%5D%20and%20I%27d%20like%20to%20learn%20how%20BevCount360%20works%20for%20my%20situation." class="btn-wapp">
+        <i class="fab fa-whatsapp"></i> Chat to Us on WhatsApp
+      </a>
+    </div>
+    <p class="cta-note">Typical response time: under 1 hour during business hours · WhatsApp always open</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">BevCount360</div>
+      <div class="footer-tagline">Let's count what matters.</div>
+      <div class="footer-clients">Live in: Broadway Place · Kroll's Inn · Mokgadi's · Matlapeng</div>
+    </div>
+    <div>
+      <h5>Head Office</h5>
+      <p>1496 Lesotho Street<br>Far East Bank, Alexandra<br>2090</p>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <a href="tel:+27813155226" style="color:#3b82f6; font-weight:700; font-size:1rem; display:block; margin-bottom:.5rem;">+27 81 315 5226</a>
+      <p style="font-size:.75rem; color:#64748b; margin-bottom:.5rem;">Mon – Fri: 08:00 – 17:00</p>
+      <a href="https://wa.me/27813155226">WhatsApp Always Open →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 BevCount360. All Rights Reserved.</div>
+</footer>
+
+<!-- STICKY WHATSAPP -->
+<div class="sticky-wapp">
+  <a href="https://wa.me/27813155226?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20BevCount360" title="Chat on WhatsApp" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<script>
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
